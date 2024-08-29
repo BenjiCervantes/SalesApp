@@ -1,0 +1,41 @@
+<div class="row m-4">
+  <div class="col-8">
+    <div class="card">
+      <div id="carousel-{{ product.id }}" class="carousel slide pointer-event" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div *ngFor="let img of product.imgUrlList; let isFirst = first" class="carousel-item {{isFirst ? 'active' : ''}}">
+            <img [src]="img" class="d-block w-100 m-1" [alt]="product.name" [routerLink]="[ '/products/', product.id]">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" [attr.data-bs-target]="'#carousel-'+product.id" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" [attr.data-bs-target]="'#carousel-'+product.id" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="card">
+      <div class="card-body p-4">
+        <h1 class="card-title">{{ product.name }}</h1>
+        <h2 class="card-subtitle text-body-secondary">{{ product.trademark }}</h2>
+        <p class="card-text">{{ product.description }}</p>
+        <p class="card-text"><strong>{{ product.price | currency }}</strong></p>
+        <p class="card-text">Contenido: {{ product.content }} {{ product.measurement }}</p>
+        <button class="btn btn-primary w-100">Agregar <i class="bi-cart-plus"></i></button>
+      </div>
+    </div>
+    <div class="card mt-4">
+      <div class="card-body">
+        <h5>Información del artículo</h5>
+        <p style="white-space: break-spaces;">
+        {{ product.details }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
